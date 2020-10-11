@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+
+{% block title %} Login {% endblock %}
+
+{% block page %}
+
+<button class="btn btn-info">
+    <a href="{% url 'all_movies' %}" style="text-decoration: none; color: white;">
+    <i class="far fa-hand-point-left"></i> Go back
+    </a>
+</button>
+
+<div class="card row justify-content-md-center" style="max-width: 400px;margin: 100px auto">
+  <div class="card-body">
+    <h5 class="card-title">Log in <i class="fas fa-sign-in-alt"></i></h5>
+      <form method="post">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button type="submit" class="btn btn-info">Log in</button>
+      </form>
+  </div>
+</div>
+
+{% endblock %}

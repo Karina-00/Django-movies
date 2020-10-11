@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+
+{% load bootstrap %}
+
+{% block title %} Film form {% endblock %}
+
+{% block page %}
+    <button class="btn btn-info">
+        <a href="{% url 'all_movies' %}" style="text-decoration: none; color: white;">
+        <i class="far fa-hand-point-left"></i> Go back
+        </a>
+    </button>
+<br><br>
+
+    <div class="card">
+      <div class="card-body">
+          {% if new %}
+          <h2>Add movie</h2>
+        {% else %}
+            <h2>Edit movie</h2>
+        {% endif %}
+          <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_film|bootstrap }}
+        {{ form_additional|bootstrap}}
+
+        {% if new %}
+            <button type="submit" class="btn btn-info">Add film</button>
+        {% else %}
+            <button type="submit" class="btn btn-info">Edit film</button>
+        {% endif %}
+    </form>
+      </div>
+    </div>
+
+    {% if form_review %}
+    <br><br>
+    <div class="card">
+      <div class="card-body">
+
+          <br><br>
+        <h2>Review Movie</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form_review|bootstrap }}
+        <button type="submit" class="btn btn-info">Add review</button>
+        </form>
+
+        {% for review in reviews %}
+          <div class="card" style="margin: 10px">
+        <div class="card-body">
+            <h4>Stars: {{ review.stars }}</h4>
+            <h4>Review: {{ review.review }}</h4>
+        </div>
+        </div>
+        {% endfor %}
+
+    {% endif  %}
+
+      </div>
+    </div>
+
+
+
+{% endblock %}

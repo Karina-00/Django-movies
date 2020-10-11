@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block title %} Confirm {% endblock %}
+
+{% block page %}
+<!--    <a href="{% url 'all_movies' %}"><i class="far fa-hand-point-left"></i> Go back</a>-->
+
+<!--    <h1>Are you sure you want to delete movie "{{ film.title }}"?</h1>-->
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <button type="submit" class="btn btn-info">Delete movie</button>-->
+<!--    </form>-->
+
+<button class="btn btn-info">
+    <a href="{% url 'all_movies' %}" style="text-decoration: none; color: white;">
+    <i class="far fa-hand-point-left"></i> Go back
+    </a>
+</button>
+
+<div class="card row justify-content-md-center" style="max-width: 400px;margin: 100px auto">
+  <div class="card-body">
+        <h5 style="padding: 10px">Are you sure you want to delete the movie "{{ film.title }}"?</h5>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-info">Delete movie</button>
+        </form>
+  </div>
+</div>
+{% endblock %}
