@@ -1,4 +1,5 @@
 # Django-movies
+Application allows user to add movies to the list. It's also possible to edit them or to delete movies from the list.
 
 - Main page
 ![App screenshot](my_media/readme/readme1.png)
